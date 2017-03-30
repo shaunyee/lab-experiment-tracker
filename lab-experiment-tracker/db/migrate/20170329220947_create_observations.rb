@@ -3,7 +3,8 @@ class CreateObservations < ActiveRecord::Migration[5.0]
     create_table :observations do |t|
       t.string :body, :null => false
       t.integer :user_id, :null => false
-      t.integer :project_id, :null => false
+      t.integer :observational_id
+      t.string  :observational_type
       t.timestamps
     end
   end
