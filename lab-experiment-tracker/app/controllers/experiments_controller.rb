@@ -7,7 +7,7 @@ class ExperimentsController < ApplicationController
     p params
     @proposal = Proposal.find(params[:id])
     @experiment = Experiment.new(experiment_params)
-    @experiment
+    @experiment.scientist_id = current_user
     redirect_to experiments_path
   end
 
