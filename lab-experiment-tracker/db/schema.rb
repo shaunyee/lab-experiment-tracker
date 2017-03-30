@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   create_table "comments", force: :cascade do |t|
     t.string   "body",             null: false
     t.integer  "user_id",          null: false
-    t.integer  "project_id",       null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
@@ -28,7 +27,6 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   create_table "experiments", force: :cascade do |t|
     t.string   "title",        null: false
     t.integer  "scientist_id", null: false
-    t.integer  "proposal_id",  null: false
     t.text     "results"
     t.text     "conclusions"
     t.datetime "created_at",   null: false
@@ -38,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   create_table "observations", force: :cascade do |t|
     t.string   "body",               null: false
     t.integer  "user_id",            null: false
-    t.integer  "project_id",         null: false
     t.integer  "observational_id"
     t.string   "observational_type"
     t.datetime "created_at",         null: false
