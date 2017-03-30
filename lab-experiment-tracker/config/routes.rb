@@ -2,10 +2,17 @@ Rails.application.routes.draw do
 
   resources :proposals do
     resources :procedures
+    resources :comments
   end
 
-  resources :experiments
-  resources :observations
+  resources :experiments do
+    resources :comments
+  end
+
+  resources :observations do
+    resources :comments
+  end
+
   resources :comments
 
 
