@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   create_table "experiments", force: :cascade do |t|
     t.string   "title",        null: false
     t.integer  "scientist_id", null: false
-    t.integer  "proposal_id",  null: false
     t.text     "results"
     t.text     "conclusions"
     t.datetime "created_at",   null: false
