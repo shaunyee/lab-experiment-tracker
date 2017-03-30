@@ -1,0 +1,12 @@
+<br>
+<%= form_for :experiment, url: {action: "create"} do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :results %><br>
+  <%= f.text_area :results %><br>
+  <%= f.label :conclusions %><br>
+  <%= f.text_area :conclusions %><br>
+<br>
+
+<%= f.submit "Create" %>
+<% end %>
