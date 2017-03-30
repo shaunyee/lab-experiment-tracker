@@ -1,3 +1,9 @@
-<h1>Yo</h1>
+<h1>Proposals</h1>
+<% @proposals.each do |proposal| %>
+	<%= link_to proposal.summary, proposal_path(proposal) %><br>
+<% end %>
 
-<%= render partial: 'comments/new', locals: {commentable: @proposal, comment: @comment} %>
+<br>
+<h3>Add New Proposal</h3>
+<%= render :partial => 'proposals/_new', :locals => {} %>
+

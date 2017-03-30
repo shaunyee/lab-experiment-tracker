@@ -1,0 +1,18 @@
+<h1><%= @experiment.title %></h1><br>
+Scientist: <%= @experiment.scientist %><br>
+
+Procedures: 
+<% @experiment.procedures.each do |procedure| %>
+	<%= procedure.body %><br>
+<% end %>
+
+Observations: <%= @experiment.observations %><br>
+
+<% if @experiment.results %>
+Results: <%= @experiment.results %><br>
+<% end %>
+
+<% if @experiment.conclusion %>
+Conclusion: <%= @experiment.conclusion %><br>
+<% end %>
+
