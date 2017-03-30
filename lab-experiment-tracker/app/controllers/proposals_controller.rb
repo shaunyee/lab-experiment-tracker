@@ -14,6 +14,7 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
+
     @proposal.user_id = session[:user_id]
 
     if @proposal.save
@@ -27,4 +28,5 @@ private
   def proposal_params
     params.require(:proposal).permit(:summary, :hypothesis)
   end
+
 end
