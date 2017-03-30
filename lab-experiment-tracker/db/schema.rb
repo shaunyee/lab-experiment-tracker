@@ -10,48 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329221004) do
+ActiveRecord::Schema.define(version: 20170330010158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "body",             null: false
+    t.integer  "user_id",          null: false
+    t.integer  "project_id",       null: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  create_table "equipment", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "equipment_projects", force: :cascade do |t|
-    t.integer  "project_id",   null: false
-    t.integer  "equipment_id", null: false
+  create_table "experiments", force: :cascade do |t|
+    t.string   "title",        null: false
+    t.integer  "scientist_id", null: false
+    t.integer  "proposal_id",  null: false
+    t.text     "results"
+    t.text     "conclusions"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "observations", force: :cascade do |t|
-    t.string   "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "body",               null: false
+    t.integer  "user_id",            null: false
+    t.integer  "project_id",         null: false
+    t.integer  "observational_id"
+    t.string   "observational_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.string   "hypothesis",                   null: false
-    t.string   "procedure",                    null: false
-    t.integer  "scientist_id",                 null: false
-    t.boolean  "isFinished",   default: false, null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+  create_table "procedures", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "experiment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "proposals", force: :cascade do |t|
+    t.string   "status",     default: "open"
+    t.text     "summary"
+    t.text     "hypothesis"
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "users", force: :cascade do |t|
