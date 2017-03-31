@@ -9,9 +9,19 @@ Procedures:
 <br>
 <br>
 Observations:
+<%= @experiment.observations.count %>
+<%= @experiment.observations.first.comments.count %>
 <% @experiment.observations.each do |observation| %>
 	<%= observation.body %><br>
+	<% observation.comments.each do |comment| %>
+		<%=  comment.body %>
+		<%=  comment.user %> <br>
+	<% end %><br>
+
 <% end %>
+
+Add new observation to experiment
+<%= render partial: 'observations/new', locals: {observable: @experiment, observation: @observation} %>
 
 <br>
 <br>
@@ -24,3 +34,15 @@ Results: <%= @experiment.results %><br>
 <% if @experiment.conclusions %>
 Conclusion: <%= @experiment.conclusions %><br>
 <% end %>
+<br>
+
+Comments:
+<br>
+
+<% @experiment.comments.each do |comment| %>
+	<%=  comment.body %>
+	<%=  comment.user %> <br>
+<% end %>
+
+Add comment to experiment
+<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>

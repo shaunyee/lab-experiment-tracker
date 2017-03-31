@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :experiments do
     resources :comments
+    resources :observations
   end
 
   resources :observations do
