@@ -15,4 +15,13 @@ class Proposal < ApplicationRecord
     end
   end
 
+  def timetrack
+    if self.status == 2
+      start_time = self.updated_at
+    elsif self.status == 3 || self.status == 4
+     self.updated_at - start_time
+    end
+
+  end
+
 end

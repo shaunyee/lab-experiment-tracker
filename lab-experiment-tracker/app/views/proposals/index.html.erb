@@ -19,12 +19,15 @@
 							Summary: <br><%= link_to proposal.summary, proposal_path(proposal) %></span><br>
 							hypothesis:<br>
 							<%= proposal.hypothesis %>
+							<% if proposal.status != 1 %>
+							Experiments started at: <%= proposal.timetrack %>
+							<% end %>
 
 						</div>
 					</div>
 				</div>
 			</div>
-		<% end %>	
+		<% end %>
 		<% end %>
 				</div>
 				<br>
