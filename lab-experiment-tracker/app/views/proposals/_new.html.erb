@@ -12,10 +12,10 @@
   </div>
 <% end %>
 <div class="row">
-    <form class="col s12">
+  <%= form_for @proposal do |f| %>
+    <div class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <%= form_for @proposal do |f| %>
             <%= f.label :summary %>
             <%= f.text_field :summary %><br />
           </div>
@@ -30,6 +30,6 @@
         <%= submit_tag "Submit", :class => "waves-effect waves-light btn" %>
       </center>
         <% end %>
-    </form>
+    </div>
   </div>
 </div>
