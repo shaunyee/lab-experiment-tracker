@@ -12,9 +12,13 @@
 
 Status: <%= @status %>
 
-<% if logged_in? && current_user.user == @proposal.user %>
+<% if logged_in? && current_user == @proposal.user %>
 	<% if @proposal.get_status == "open" %>
-		Summary: <br><%= link_to proposal. %>
+		<%= link_to "Set In Progress", change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "closed" %>
+		<%= link_to "Archive Proposal",change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "in progress" %>
+		<%= link_to "Close Proposal", change_status_path(@proposal.id), method: :put %>
 	<% end %>
 <% end %>
 
