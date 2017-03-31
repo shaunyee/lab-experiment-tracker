@@ -1,26 +1,60 @@
 <center>
-<h2><%= @proposal.summary%></h2>
+  <h2><%= @proposal.summary%></h2>
 </center>
 <br>
-<div class="container">
-  <div class="row">
-    <div class="col s4">Hypothesis: <%= @proposal.hypothesis %></div><br>
-<div class="col s4">Scientist: <%= @proposal.user.first_name %></div><br>
+<center>
+    <div class="row">
+      <div class="col s6">
+        <div class="card-panel blue darken-3">
+          <span>
+            <h3>Hypothesis <h3>
+              <h4><%= @proposal.hypothesis %></h4>
+              <h4>Scientist: </h4>
+              <h5><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h5>
+              <%if @status == "open"%>
+              Status: <span class="cyan"><%= @status %></span>
+              <%end%>
+              <%if @status == "in progress"%>
+              Status: <span class="green lighten-1"><%= @status %></span>
+              <%end%>
+              <%if @status == "closed"%>
+              Status: <span class="red lighten-1"><%= @status %></span>
+              <%end%>
+              <%if @status == "archived"%>
+              Status: <span class="purple accent-2"><%= @status %></span>
+              <%end%>
+          </span>
+        </div>
+      </div>
+    </div>
+</center>
 
-</div>
-</div>
+<% if logged_in? && current_user == @proposal.user %>
+	<% if @proposal.get_status == "open" %>
+		<%= link_to "Set In Progress", change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "closed" %>
+		<%= link_to "Archive Proposal",change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "in progress" %>
+		<%= link_to "Close Proposal", change_status_path(@proposal.id), method: :put %>
+	<% end %>
+<% end %>
 
-Status: <%= @status %>
-
-Comments:
+<h3>Comments:</h3>
 <br>
 <% @proposal.comments.each do |comment| %>
-<%=  comment.body %>
-<%=  comment.user.last_name %> <br><br>
+<h4><%=  comment.body %></h4><br>
+<div class="row">
+  <div class="col s4">
+    <div class="chip orange lighten-2">
+      <%= comment.user.first_name %>
+      <%= comment.user.last_name %>
+  </div>
+</div>
+</div>
 <% end %>
+</div>
 
 Add comment to proposal
 <%= render partial: 'comments/new', locals: {commentable: @proposal, comment: Comment.new} %>
-
 
 <%= render :partial => 'experiments/index', :locals => {experiments: @proposal.experiments, proposal: @proposal} %>
