@@ -1,6 +1,8 @@
 <h1><%= @experiment.title %></h1><br>
 Scientist: <%= @experiment.scientist.first_name %><br>
 
+<%= button_to "Update your findings!", edit_proposal_experiment(@experiment) %>
+
 <br>
 Procedures:
 <% @experiment.procedures.each do |procedure| %>
@@ -60,4 +62,3 @@ Comments:
 	Add comment to experiment
 	<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>
 <% end %>
-
