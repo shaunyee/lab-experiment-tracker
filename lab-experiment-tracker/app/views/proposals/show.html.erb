@@ -12,17 +12,17 @@
               <h4><%= @proposal.hypothesis %></h4>
               <h4>Scientist: </h4>
               <h5><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h5>
-              <%if @status == "open"%>
-              Status: <span class="cyan"><%= @status %></span>
+              <%if @proposal.get_status == "open"%>
+              Status: <span class="cyan"><%= @proposal.status %></span>
               <%end%>
-              <%if @status == "in progress"%>
-              Status: <span class="green lighten-1"><%= @status %></span>
+              <%if @proposal.get_status == "in progress"%>
+              Status: <span class="green lighten-1"><%= @proposal.status %></span>
               <%end%>
-              <%if @status == "closed"%>
-              Status: <span class="red lighten-1"><%= @status %></span>
+              <%if @proposal.get_status == "closed"%>
+              Status: <span class="red lighten-1"><%= @proposal.status %></span>
               <%end%>
-              <%if @status == "archived"%>
-              Status: <span class="purple accent-2"><%= @status %></span>
+              <%if @proposal.get_status == "archived"%>
+              Status: <span class="purple accent-2"><%= @proposal.status %></span>
               <%end%>
           </span>
         </div>
@@ -39,6 +39,7 @@
 		<%= link_to "Close Proposal", change_status_path(@proposal.id), method: :put %>
 	<% end %>
 <% end %>
+
 
 <h3>Comments:</h3>
 <br>
