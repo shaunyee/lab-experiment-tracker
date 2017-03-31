@@ -1,8 +1,8 @@
 <h1>Experiments</h1>
-<% @experiments.each do |experiment| %>
+<% experiments.each do |experiment| %>
 	<%= link_to experiment.title, experiment_path(experiment) %><br>
 <% end %>
 
 <br>
 <h3>Add New Experiment</h3>
-<%= render :partial => 'experiments/_new', :locals => {proposal: @proposal} %>
+<%= render :partial => 'experiments/new', :locals => {proposal: @proposal} %>

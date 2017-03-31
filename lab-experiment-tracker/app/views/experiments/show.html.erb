@@ -1,18 +1,26 @@
 <h1><%= @experiment.title %></h1><br>
-Scientist: <%= @experiment.scientist %><br>
+Scientist: <%= @experiment.scientist.first_name %><br>
 
-Procedures: 
+<br>
+Procedures:
 <% @experiment.procedures.each do |procedure| %>
 	<%= procedure.body %><br>
 <% end %>
+<br>
+<br>
+Observations:
+<% @experiment.observations.each do |observation| %>
+	<%= observation.body %><br>
+<% end %>
 
-Observations: <%= @experiment.observations %><br>
-
+<br>
+<br>
 <% if @experiment.results %>
 Results: <%= @experiment.results %><br>
 <% end %>
 
-<% if @experiment.conclusion %>
-Conclusion: <%= @experiment.conclusion %><br>
+<br>
+<br>
+<% if @experiment.conclusions %>
+Conclusion: <%= @experiment.conclusions %><br>
 <% end %>
-

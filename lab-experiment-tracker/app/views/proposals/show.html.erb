@@ -1,0 +1,20 @@
+<br>
+
+Scientist: <%= @proposal.user.first_name %><br>
+
+Summary: <%= @proposal.summary %><br>
+
+Hypothesis: <%= @proposal.hypothesis %><br>
+
+Comments:
+<br>
+<% @proposal.comments.each do |comment| %>
+<%=  comment.body %>
+<%=  comment.user %> <br><br><br><br>
+<% end %>
+
+Add comment to proposal
+<%= render partial: 'comments/new', locals: {commentable: @proposal, comment: @comment} %>
+
+
+<%= render :partial => 'experiments/index', :locals => {experiments: @proposal.experiments, proposal: @proposal} %>

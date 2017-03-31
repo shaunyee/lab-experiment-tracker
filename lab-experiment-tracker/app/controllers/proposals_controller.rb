@@ -4,12 +4,20 @@ class ProposalsController < ApplicationController
 
     #@proposal = Proposal.create(summary: "sdlkhflkadsj", hypothesis: "sdfadsf", user: User.first)
     #@comment = @proposal.comments.new
+    @user = User.new
   	@proposals = Proposal.all
+    @proposal = Proposal.new
 
   end
 
   def new
     @proposal = Proposal.new
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
+    @comment = @proposal.comments.new
+    @experiments = @proposal.experiments
   end
 
   def create

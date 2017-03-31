@@ -1,5 +1,5 @@
 <br>
-<%= form_for :experiment, url: {action: "create"} do |f| %>
+<%= form_for :experiment, url: proposal_experiments_path(proposal) do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   <%= f.label :results %><br>
