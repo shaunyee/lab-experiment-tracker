@@ -4,19 +4,15 @@ Scientist: <%= @experiment.scientist.first_name %>
 </div>
 <br>
 
-
-
 <br>
 Procedures:
-<% @experiment.procedures.each do |procedure| %>
-	<%= procedure.body %><br>
+<ol>
+<% @experiment.procedures.order(created_at: :desc).each do |procedure| %>
+	<li><%= procedure.body %><br></li>
 <% end %>
 <br>
 <br>
-
-<h3>Add New Procedure</h3>
-<%= render :partial => 'procedures/new', :locals => {experiment: @experiment} %>
-
+</ol>
 
 Observations:
 <% @experiment.observations.each do |observation| %>
@@ -49,6 +45,22 @@ Results: <%= @experiment.results %><br>
 Conclusion: <%= @experiment.conclusions %><br>
 <% end %>
 <br>
+
+<% if logged_in? && current_user.id == @experiment.scientist_id %>
+<h3>Add New Procedure</h3>
+<%= render :partial => 'procedures/new', :locals => {experiment: @experiment} %>
+
+<% if !@experiment.results %>
+<h3>Add Results</h3>
+<%= render :partial => 'experiments/edit_results', :locals => {experiment: @experiment} %>
+<% end %>
+
+<% if !@experiment.conclusions %>
+<h3>Add Conclusions</h3>
+<%= render :partial => 'experiments/edit_conclusions', :locals => {experiment: @experiment} %>
+<% end %>
+
+<% end %>
 
 Comments:
 <br>
