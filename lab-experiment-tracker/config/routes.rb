@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :proposals do
-    resources :procedures
     resources :comments
     resources :experiments
   end
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   resources :experiments do
     resources :comments
     resources :observations
+    resources :procedures
   end
 
   resources :observations do
