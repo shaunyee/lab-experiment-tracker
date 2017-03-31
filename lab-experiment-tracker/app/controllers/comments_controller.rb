@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
     @object = request.fullpath.split("/")[1][0..-2].capitalize.constantize.find(request.fullpath.split("/")[2]).comments.create(body: params[:comment][:body], user_id: current_user.id)
 
-    redirect_to root_path
+    redirect_to(:back)
   end
 
 end
