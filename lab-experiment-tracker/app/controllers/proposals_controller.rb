@@ -33,6 +33,21 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def update
+    @proposal = Proposal.find(params[:id])
+    @status = @proposal.get_status
+
+    if @status == "open"
+      @proposal.update_attributes(status: 2)
+    elsif @status == "in progress"
+      @proposal.update_attributes(status: 3)
+    elsif @status == "closed"
+      @proposal.update_attributes(status: 4)
+    end
+    @proposal.save
+    redirect_to(:back)
+  end
+
 private
   def proposal_params
     params.require(:proposal).permit(:summary, :hypothesis)

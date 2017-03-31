@@ -5,26 +5,14 @@ class Proposal < ApplicationRecord
 
   def get_status
     if self.status == 1
-      "open"
+      "Open"
     elsif self.status == 2
-      "in progress"
+      "In progress"
     elsif self.status == 3
-      "closed"
+      "Closed"
     else
-      "archived"
+      "Archived"
     end
-  end
-
-  def put_in_progress
-    self.status = 2
-  end
-
-  def close_proposal
-    self.status = 3
-  end
-
-  def archive_proposal
-    self.status = 4
   end
 
 end
