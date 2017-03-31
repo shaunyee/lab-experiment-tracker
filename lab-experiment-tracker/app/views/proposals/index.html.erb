@@ -1,5 +1,5 @@
 <center>
-<h2>Experiment Expert</h2>
+	<h2>Experiment Expert</h2>
 </center>
 <div class="parallax-container">
 	<div class="parallax"><%= image_tag "science-lab-pan.jpg", :class => "responsive-img" %></div>
@@ -8,8 +8,9 @@
 <div class="container">
 	<h2>Proposals</h2>
 </div>
-		<div class="container">
+<div class="container">
 	<% @proposals.each do |proposal| %>
+<<<<<<< HEAD
 	<%= link_to proposal.summary, proposal_path(proposal) %></span><br>
 
 	<% end %>
@@ -20,3 +21,25 @@
 	<div class="container blue darken-4">
 	<%= render :partial => 'proposals/new', :locals => {} %>
 </div>
+=======
+	<div class="row">
+		<div class="col m6">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">
+						Summary: <br><%= link_to proposal.summary, proposal_path(proposal) %></span><br>
+						hypothesis:<br>
+						<%= proposal.hypothesis %>
+
+					</div>
+				</div>
+			</div>
+		</div>
+						<% end %>
+				</div>
+				<br>
+				<br>
+				<div class="container blue darken-4">
+					<%= render :partial => 'proposals/new', :locals => {} %>
+				</div>
+>>>>>>> b56a0ce05d3abf38fc62c3b87e931b3032b52b1d
