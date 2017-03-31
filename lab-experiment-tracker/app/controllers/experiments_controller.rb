@@ -20,10 +20,14 @@ class ExperimentsController < ApplicationController
   def show
     @experiments = Experiment.all
     @experiment = Experiment.find(params[:id])
-    # @comment1 = @experiment.comments
-    # @observation = @experiment.observations
-    # @comment2 = @observation.comments
 
+  end
+
+  def update
+    @experiment = Experiment.find(params[:id])
+    @experiment.update(experiment_params)
+
+    redirect_to (:back)
   end
 
   private

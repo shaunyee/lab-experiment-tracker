@@ -37,11 +37,11 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     @status = @proposal.get_status
 
-    if @status == "open"
+    if @status == "Open"
       @proposal.update_attributes(status: 2)
-    elsif @status == "in progress"
+    elsif @status == "In progress"
       @proposal.update_attributes(status: 3)
-    elsif @status == "closed"
+    elsif @status == "Closed"
       @proposal.update_attributes(status: 4)
     end
     @proposal.save

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330010158) do
+ActiveRecord::Schema.define(version: 20170331215005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20170330010158) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "procedure_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["procedure_id"], name: "index_equipment_on_procedure_id", using: :btree
   end
 
   create_table "experiments", force: :cascade do |t|
