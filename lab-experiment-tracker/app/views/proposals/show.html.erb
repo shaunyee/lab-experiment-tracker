@@ -30,11 +30,11 @@
 </center>
 
 <% if logged_in? && current_user == @proposal.user %>
-	<% if @proposal.get_status == "open" %>
+	<% if @proposal.get_status == "Open" %>
 		<%= link_to "Set In Progress", change_status_path(@proposal.id), method: :put %>
-	<% elsif @proposal.get_status == "closed" %>
+	<% elsif @proposal.get_status == "Closed" %>
 		<%= link_to "Archive Proposal",change_status_path(@proposal.id), method: :put %>
-	<% elsif @proposal.get_status == "in progress" %>
+	<% elsif @proposal.get_status == "In progress" %>
 		<%= link_to "Close Proposal", change_status_path(@proposal.id), method: :put %>
 	<% end %>
 <% end %>
