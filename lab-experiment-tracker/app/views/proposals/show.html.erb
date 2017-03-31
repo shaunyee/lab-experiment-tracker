@@ -12,6 +12,12 @@
 
 Status: <%= @status %>
 
+<% if logged_in? && current_user.user == @proposal.user %>
+	<% if @proposal.get_status == "open" %>
+		Summary: <br><%= link_to proposal. %>
+	<% end %>
+<% end %>
+
 Comments:
 <br>
 <% @proposal.comments.each do |comment| %>
