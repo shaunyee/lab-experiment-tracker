@@ -27,6 +27,8 @@
 				</div>
 				<br>
 				<br>
-				<div class="container blue darken-4">
-					<%= render :partial => 'proposals/new', :locals => {} %>
-				</div>
+				<% if logged_in? && current_user.isScientist == true %>
+					<div class="container blue darken-4">
+						<%= render :partial => 'proposals/new', :locals => {} %>
+					</div>
+				<% end %>
