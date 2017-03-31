@@ -4,5 +4,7 @@
 <% end %>
 
 <br>
-<h3>Add New Experiment</h3>
-<%= render :partial => 'experiments/new', :locals => {proposal: @proposal} %>
+<% if logged_in? && current_user.isScientist == true %>
+	<h3>Add New Experiment</h3>
+	<%= render :partial => 'experiments/new', :locals => {proposal: @proposal} %>
+<% end %>

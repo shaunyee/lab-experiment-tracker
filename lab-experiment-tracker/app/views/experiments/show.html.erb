@@ -8,6 +8,7 @@ Procedures:
 <% end %>
 <br>
 <br>
+
 <h3>Add New Procedure</h3>
 <%= render :partial => 'procedures/new', :locals => {experiment: @experiment} %>
 
@@ -27,8 +28,11 @@ Observations:
 <% end %>
 
 
-Add new observation to experiment
-<%= render partial: 'observations/new', locals: {observable: @experiment, observation: Observation.new} %>
+<% if logged_in? && current_user.isScientist == true %>
+	Add new observation to experiment
+	<%= render partial: 'observations/new', locals: {observable: @experiment, observation: @observation} %>
+<% end %>
+
 
 <br>
 <br>
@@ -51,5 +55,9 @@ Comments:
 	<%=  comment.user %> <br>
 <% end %>
 
-Add comment to experiment
-<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: Comment.new} %>
+
+<% if logged_in? == true %>
+	Add comment to experiment
+	<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>
+<% end %>
+
