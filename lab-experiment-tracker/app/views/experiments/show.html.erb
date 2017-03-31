@@ -23,12 +23,16 @@ Observations:
 		<%=  comment.user %> <br>
 	<% end %><br>
 
+	Add comment to observation
+	<%= render partial: 'comments/new', locals: {commentable: observation, comment: Comment.new} %>
 <% end %>
+
 
 <% if logged_in? && current_user.isScientist == true %>
 	Add new observation to experiment
 	<%= render partial: 'observations/new', locals: {observable: @experiment, observation: @observation} %>
 <% end %>
+
 
 <br>
 <br>
@@ -51,7 +55,9 @@ Comments:
 	<%=  comment.user %> <br>
 <% end %>
 
+
 <% if logged_in? == true %>
 	Add comment to experiment
 	<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>
 <% end %>
+

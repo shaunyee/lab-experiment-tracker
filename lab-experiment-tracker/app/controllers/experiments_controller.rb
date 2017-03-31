@@ -19,13 +19,10 @@ class ExperimentsController < ApplicationController
   def show
     @experiments = Experiment.all
     @experiment = Experiment.find(params[:id])
-    @comment1 = @experiment.comments.new
-    @observation = @experiment.observations.new
-    @comment2 = @observation.comments.new
+    # @comment1 = @experiment.comments
+    # @observation = @experiment.observations
+    # @comment2 = @observation.comments
 
-    # FOR RENDERING COMMENTS IN observations
-    # Add comment to observation
-    # <%= render partial: 'comments/new', locals: {commentable: observation, comment: @comment2} %>
   end
 
   private
