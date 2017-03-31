@@ -8,6 +8,10 @@ Procedures:
 <% end %>
 <br>
 <br>
+<h3>Add New Procedure</h3>
+<%= render :partial => 'procedures/new', :locals => {experiment: @experiment} %>
+
+
 Observations:
 <% @experiment.observations.each do |observation| %>
 	<%= observation.body %><br>
