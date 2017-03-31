@@ -14,5 +14,17 @@ class Proposal < ApplicationRecord
       "archived"
     end
   end
-  
+
+  def put_in_progress
+    self.status = 2
+  end
+
+  def close_proposal
+    self.status = 3
+  end
+
+  def archive_proposal
+    self.status = 4
+  end
+
 end

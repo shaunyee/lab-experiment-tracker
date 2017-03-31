@@ -13,6 +13,7 @@ class ExperimentsController < ApplicationController
     @experiment.proposal_id = @proposal.id
     p @experiment
     @experiment.save
+    @proposal.put_in_progress
     redirect_to proposal_path(@proposal)
   end
 
