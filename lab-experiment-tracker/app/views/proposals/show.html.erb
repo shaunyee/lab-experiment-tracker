@@ -29,7 +29,16 @@
     </div>
 </center>
 
-<div class="container">
+<% if logged_in? && current_user == @proposal.user %>
+	<% if @proposal.get_status == "open" %>
+		<%= link_to "Set In Progress", change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "closed" %>
+		<%= link_to "Archive Proposal",change_status_path(@proposal.id), method: :put %>
+	<% elsif @proposal.get_status == "in progress" %>
+		<%= link_to "Close Proposal", change_status_path(@proposal.id), method: :put %>
+	<% end %>
+<% end %>
+
 <h3>Comments:</h3>
 <br>
 <% @proposal.comments.each do |comment| %>
