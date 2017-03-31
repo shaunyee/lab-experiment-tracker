@@ -3,17 +3,14 @@ class ExperimentsController < ApplicationController
     render 'experiments/_new.html.erb'
   end
   def create
-
-    p experiment_params
-    p proposal_params
-
     @proposal = Proposal.find(proposal_params)
     @experiment = Experiment.new(experiment_params)
     @experiment.scientist_id = current_user.id
     @experiment.proposal_id = @proposal.id
-    p @experiment
+
     @experiment.save
     @proposal.put_in_progress
+    
     redirect_to proposal_path(@proposal)
   end
 
