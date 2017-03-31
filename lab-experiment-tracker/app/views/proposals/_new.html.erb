@@ -1,4 +1,5 @@
-<h1>Add a New Proposal:</h1>
+<div class="container">
+<h3>Add a New Proposal:</h3>
 <% if @proposal.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@proposal.errors.count, "error") %> prohibited this proposal from being saved:</h2>
@@ -10,13 +11,25 @@
     </ul>
   </div>
 <% end %>
-
-<%= form_for @proposal do |f| %>
-  <%= f.label :summary %>:
-  <%= f.text_field :summary %><br />
-
-  <%= f.label :hypothesis %>:
-  <%= f.text_field :hypothesis %><br />
-
-  <%= f.submit %>
-<% end %>
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <%= form_for @proposal do |f| %>
+            <%= f.label :summary %>
+            <%= f.text_field :summary %><br />
+          </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s6">
+          <%= f.label :hypothesis %>
+          <%= f.text_field :hypothesis %><br />
+        </div>
+      </div>
+      <center>
+        <%= submit_tag "Submit", :class => "waves-effect waves-light btn" %>
+      </center>
+        <% end %>
+    </form>
+  </div>
+</div>
