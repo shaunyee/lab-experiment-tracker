@@ -17,8 +17,10 @@
 					<span class="card-title">
 						Summary: <br><%= link_to proposal.summary, proposal_path(proposal) %></span><br>
 						hypothesis:<br>
-						<%= proposal.hypothesis %>
-
+						<%= proposal.hypothesis %><br><br>
+						<% if proposal.status != 1 %>
+						 Experiments started at: <%= proposal.timetrack %>
+						 <% end %>
 					</div>
 				</div>
 			</div>
