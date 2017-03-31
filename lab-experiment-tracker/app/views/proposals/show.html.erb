@@ -10,11 +10,11 @@ Comments:
 <br>
 <% @proposal.comments.each do |comment| %>
 <%=  comment.body %>
-<%=  comment.user %> <br><br>
+<%=  comment.user.last_name %> <br><br>
 <% end %>
 
 Add comment to proposal
-<%= render partial: 'comments/new', locals: {commentable: @proposal, comment: @comment} %>
+<%= render partial: 'comments/new', locals: {commentable: @proposal, comment: Comment.new} %>
 
 
 <%= render :partial => 'experiments/index', :locals => {experiments: @proposal.experiments, proposal: @proposal} %>
