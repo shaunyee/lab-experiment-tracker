@@ -17,8 +17,6 @@ Procedures:
 
 
 Observations:
-<%= @experiment.observations.count %>
-<%= @experiment.observations.first.comments.count %>
 <% @experiment.observations.each do |observation| %>
 	<%= observation.body %><br>
 	<% observation.comments.each do |comment| %>
@@ -33,7 +31,7 @@ Observations:
 
 <% if logged_in? && current_user.isScientist == true %>
 	Add new observation to experiment
-	<%= render partial: 'observations/new', locals: {observable: @experiment, observation: @observation} %>
+	<%= render partial: 'observations/new', locals: {observable: @experiment, observation: Observation.new} %>
 <% end %>
 
 
@@ -61,6 +59,5 @@ Comments:
 
 <% if logged_in? == true %>
 	Add comment to experiment
-	<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>
+	<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: Comment.new} %>
 <% end %>
-
