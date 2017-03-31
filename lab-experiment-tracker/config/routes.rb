@@ -30,6 +30,5 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   put '/proposals/:id' => 'proposals#update', :as => 'change_status'
-  # post '/edit_status' => 'proposals#update'
 
 end

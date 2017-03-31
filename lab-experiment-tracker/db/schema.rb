@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330010158) do
+ActiveRecord::Schema.define(version: 20170331215005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20170330010158) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "procedure_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["procedure_id"], name: "index_equipment_on_procedure_id", using: :btree
   end
 
   create_table "experiments", force: :cascade do |t|
@@ -36,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170330010158) do
 
   create_table "observations", force: :cascade do |t|
     t.string   "body",               null: false
-    t.integer  "scientist_id",       null: false
+    t.integer  "user_id",            null: false
     t.integer  "observational_id"
     t.string   "observational_type"
     t.datetime "created_at",         null: false
@@ -51,12 +59,12 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.integer  "status",     default: 1
+    t.string   "status",     default: "open"
     t.text     "summary"
     t.text     "hypothesis"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "users", force: :cascade do |t|
