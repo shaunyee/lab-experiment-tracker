@@ -18,6 +18,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     @comment = @proposal.comments
     @experiments = @proposal.experiments
+    @status = @proposal.get_status
   end
 
   def create
@@ -28,7 +29,7 @@ class ProposalsController < ApplicationController
     if @proposal.save
       redirect_to @proposal, notice: 'Proposal was successfully created.'
     else
-      render :new, status: 422
+      render :show, status: 422
     end
   end
 

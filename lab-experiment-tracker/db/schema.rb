@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20170330010158) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.string   "status",     default: "open"
+    t.integer  "status",     default: 1
     t.text     "summary"
     t.text     "hypothesis"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
