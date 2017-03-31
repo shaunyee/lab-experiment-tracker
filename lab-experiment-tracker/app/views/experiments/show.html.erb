@@ -22,10 +22,13 @@ Observations:
 		<%=  comment.user %> <br>
 	<% end %><br>
 
+	Add comment to observation
+	<%= render partial: 'comments/new', locals: {commentable: observation, comment: Comment.new} %>
 <% end %>
 
+
 Add new observation to experiment
-<%= render partial: 'observations/new', locals: {observable: @experiment, observation: @observation} %>
+<%= render partial: 'observations/new', locals: {observable: @experiment, observation: Observation.new} %>
 
 <br>
 <br>
@@ -49,4 +52,4 @@ Comments:
 <% end %>
 
 Add comment to experiment
-<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: @comment1} %>
+<%= render partial: 'comments/new', locals: {commentable: @experiment, comment: Comment.new} %>
