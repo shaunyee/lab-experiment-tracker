@@ -15,6 +15,5 @@ class Proposal < ApplicationRecord
     end
   end
 
-  end
 
 end
