@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :experiments do
     resources :comments
     resources :observations
-    resources :procedures
+    resources :procedures do
+      resources :equipments
+    end
   end
 
   resources :observations do

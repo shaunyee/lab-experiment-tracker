@@ -15,3 +15,25 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
+
+$( document ).ready(function() {
+  procedureListener();
+});
+
+var procedureListener = function() {
+  $(".procedure-item").on("click", function(e) {
+    e.preventDefault();
+    var $target = $(this)
+    var data = $(this).text()
+    var url = 'equipments/index'
+    var method = "GET"
+    $.ajax({
+      data: data,
+      url: url,
+      method: method
+    })
+    .done(function (){
+      $target.find(".equipmentui").toggle();
+    });
+  });
+};

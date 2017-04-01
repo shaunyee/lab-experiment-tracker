@@ -8,7 +8,8 @@ Scientist: <%= @experiment.scientist.first_name %>
 Procedures:
 <ol>
 <% @experiment.procedures.order(created_at: :desc).each do |procedure| %>
-	<li><%= procedure.body %><br></li>
+	<li class="procedure-item"><%= procedure.body %><br></li>
+	<%= render partial: 'equipments/index', locals: {procedure: procedure} %>
 <% end %>
 <br>
 <br>
